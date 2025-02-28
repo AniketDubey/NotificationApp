@@ -65,7 +65,7 @@ class FirebaseNotification : FirebaseMessagingService() {
         }
 
         val pendingIntent = PendingIntent.getActivity(
-            this, NftValue.valuenft, intent, PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
+            this, desc.toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT  or PendingIntent.FLAG_IMMUTABLE
         )
 
         val CHANNEL_ID = "HEADS_UP_NOTIFICATION"
@@ -85,8 +85,8 @@ class FirebaseNotification : FirebaseMessagingService() {
 
         val notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(NftValue.valuenft, notificationBuilder.build())
-        ++NftValue.valuenft
+        notificationManager.notify(desc.toInt(), notificationBuilder.build())
+//        ++NftValue.valuenft
     }
 }
 
